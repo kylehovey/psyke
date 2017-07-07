@@ -1,0 +1,10 @@
+{
+  "compileJS" : [
+    {
+      "name" : "Transpile Javascript",
+      "src" : "./src/*.js",
+      "dest" : "./dist/",
+      "enabled" : true
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "psyke",
+  "version": "1.0.0",
+  "description": "Very small and simple library for mocking Promises for testing.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kylehovey/psyke.git"
+  },
+  "keywords": [
+    "Promise",
+    "Mock",
+    "Test",
+    "Fake",
+    "Dummy"
+  ],
+  "author": "Kyle Hovey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kylehovey/psyke/issues"
+  },
+  "homepage": "https://github.com/kylehovey/psyke#readme",
+  "devDependencies": {
+    "babel-preset-latest": "^6.24.1",
+    "config.json": "0.0.4",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-changed": "^3.1.0",
+    "gulp-sourcemaps": "^2.6.0"
+  }
+}
