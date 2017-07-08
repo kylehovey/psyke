@@ -1,10 +1,5 @@
 /**
  * Psyke Promise mock suite
- *
- * Design goals:
- *
- * Create resolving promises on the fly: psyke.resolve.to(value).after(time)
- * Create rejecting promises on the fly: psyke.reject.to(value).after(time)
  */
 
 /**
@@ -32,7 +27,7 @@ class _Psyke {
   /**
    * Create a promise that will complete after t ms
    * @param {Number} t Time in ms to complete
-   * @retur {Promise}
+   * @return {Promise}
    */
   after(t) {
     return new Promise((resolve, reject) => {
@@ -46,22 +41,31 @@ class _Psyke {
 // On load wrapper
 (() => {
   // Define the global psyke object
-  window.psyke = new Object();
+  let psyke = new Object();
 
   /**
-   * Use rejection as the promise outcome
+   * Use resolution as the promise outcome
    */
-  Object.defineProperty(window.psyke, "resolve", {
+  Object.defineProperty(psyke, "resolve", {
     get : () => new _Psyke(true)
   });
 
   /**
    * Use rejection as the promise outcome
    */
-  Object.defineProperty(window.psyke, "reject", {
+  Object.defineProperty(psyke, "reject", {
     get : () => new _Psyke(false)
   });
 
   // Seal psyke
-  window.psyke = Object.seal(window.psyke);
+  psyke = Object.seal(psyke);
+
+  // Seal psyke
+  if (module) {
+    module.exports = psyke;
+  } else {
+    Object.defineProperty(window, "psyke", {
+      value : psyke
+    });
+  }
 })()
