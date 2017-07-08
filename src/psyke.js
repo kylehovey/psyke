@@ -60,12 +60,16 @@ class _Psyke {
   // Seal psyke
   psyke = Object.seal(psyke);
 
-  // Seal psyke
+  // Either export psyke or add it to the global scope
   if (module) {
     module.exports = psyke;
-  } else {
+  } else if (window) {
     Object.defineProperty(window, "psyke", {
       value : psyke
     });
+  } else {
+    throw new Error(
+      "Could not include psyke. Are you using Node or a Browser?"
+    );
   }
 })()
