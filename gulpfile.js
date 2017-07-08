@@ -1,8 +1,8 @@
 // Dependencies
 const changed = require('gulp-changed');
-const sourcemaps = require('gulp-sourcemaps');
 const gulp = require('gulp');
 const babel = require('gulp-babel');
+const uglify = require('gulp-uglify');
 
 // Configuration
 const JSCompileTasks = require('config.json')('./config/gulp.json')
@@ -22,9 +22,8 @@ function compileJS(source, destination) {
   // Return the pipeline
   return () => gulp.src(source)
     .pipe(changed(destination))
-    .pipe(sourcemaps.init())
     /* Babel config is in .babelrc */
     .pipe(babel())
-    .pipe(sourcemaps.write())
+    .pipe(uglify())
     .pipe(gulp.dest(destination));
 }
